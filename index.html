@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM Comex & Logística | Importação e Exportação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-btn.active { border-bottom: 3px solid #1e40af; color: #1e40af; }
+        
+        /* Estilo para vídeo de fundo */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        @media (max-aspect-ratio: 16/9) {
+            .video-background { width: 300%; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- 1. COTACAO TRADINGVIEW -->
+    <header class="w-full border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    { "description": "USD 1 - Dólar Fiscal (R$)", "proName": "FX_IDC:USDBRL" },
+                    { "description": "ARS 1 - Peso Argentino (R$)", "proName": "FX_IDC:ARSBRL" }
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "locale": "br"
+            }
+            </script>
+        </div>
+
+        <!-- 2. HEADER PRINCIPAL -->
+        <nav class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between bg-white">
+            <div class="flex items-center">
+                <!-- Logo como Imagem -->
+                <img src="LOGO-ML-Comex-2026.png" alt="LM Comex & Logística" class="h-16 md:h-20 object-contain">
+            </div>
+
+            <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                <a href="#quem-somos" class="hover:text-blue-900 transition border-b-2 border-transparent hover:border-blue-900 pb-1">Quem somos</a>
+                <a href="#servicos" class="hover:text-blue-900 transition border-b-2 border-transparent hover:border-blue-900 pb-1">Serviços</a>
+                <a href="#contato" class="hover:text-blue-900 transition border-b-2 border-transparent hover:border-blue-900 pb-1">Contato</a>
+            </div>
+
+            <a href="https://wa.me/555598130054" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full flex items-center shadow-lg transition transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                <span class="font-semibold">Falar com especialista</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- 3. HERO SECTION COM VÍDEO DE FUNDO -->
+    <section class="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Video Iframe Wrapper -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-blue-950/70 z-10"></div> <!-- Overlay para legibilidade -->
+            <iframe class="video-background" 
+                src="https://www.youtube.com/embed/GC0xUrBPJS4?autoplay=1&mute=1&loop=1&playlist=GC0xUrBPJS4&controls=0&showinfo=0&rel=0&enablejsapi=1" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-20 text-center text-white">
+            <h2 class="text-blue-300 font-bold uppercase tracking-widest mb-4 drop-shadow-md">Importação & Exportação - Empresa líder desde 1997</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight drop-shadow-lg">Transforme o seu negócio em <span class="text-blue-400">Internacional</span>!</h1>
+            
+            <div id="quem-somos" class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-2xl">
+                <h3 class="text-2xl font-bold mb-4">Sobre nós: Experiência e compromisso</h3>
+                
+                <!-- Botão de Vídeo Popup -->
+                <button onclick="openVideoModal('https://www.youtube.com/embed/26IMnCPTJMo?si=rAhFf53ziS6ewGH1')" class="group flex flex-col items-center justify-center mx-auto mb-6">
+                    <div class="bg-white text-blue-900 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-play text-xl ml-1"></i>
+                    </div>
+                    <span class="mt-2 text-sm font-semibold uppercase tracking-wider group-hover:text-blue-300 transition">Ver apresentação</span>
+                </button>
+                
+                <p class="text-lg leading-relaxed text-gray-100 uppercase font-bold tracking-tight">
+                    ATUAMOS NO SEGUNDO MAIOR PORTO SECO DA AMÉRICA LATINA, REALIZAMOS TODOS OS SERVIÇOS DE COMÉRCIO EXTERIOR NECESSÁRIOS PARA A LIBERAÇÃO DE SUA CARGA.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVIÇOS (ABAS) -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-blue-900 mb-3">Eficiência em conexões!</h2>
+                <div class="w-24 h-1.5 bg-blue-900 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-500 text-lg italic">O que fazemos - nossas especialidades</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <!-- Abas Header -->
+                <div class="flex flex-wrap border-b border-gray-200 mb-10 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <button onclick="openTab(event, 'import')" class="tab-btn active px-8 py-4 font-bold text-gray-500 hover:text-blue-900 transition uppercase tracking-tighter">Importação</button>
+                    <button onclick="openTab(event, 'export')" class="tab-btn px-8 py-4 font-bold text-gray-500 hover:text-blue-900 transition uppercase tracking-tighter">Exportação</button>
+                    <button onclick="openTab(event, 'assessoria')" class="tab-btn px-8 py-4 font-bold text-gray-500 hover:text-blue-900 transition uppercase tracking-tighter">Assessoria Aduaneira</button>
+                    <button onclick="openTab(event, 'consultoria')" class="tab-btn px-8 py-4 font-bold text-gray-500 hover:text-blue-900 transition uppercase tracking-tighter">Consultoria Internacional</button>
+                    <button onclick="openTab(event, 'transporte')" class="tab-btn px-8 py-4 font-bold text-gray-500 hover:text-blue-900 transition uppercase tracking-tighter">Represent. de Transportes</button>
+                </div>
+
+                <!-- Conteúdo Importação -->
+                <div id="import" class="tab-content active animate-fadeIn">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Global Sourcing</span>
+                            <h4 class="text-3xl font-bold text-blue-900 mb-6">Importação</h4>
+                            <p class="text-gray-600 leading-relaxed mb-6">A importação é o processo de aquisição de bens e serviços de um país estrangeiro para uso ou consumo no Brasil. É uma atividade econômica importante para o país, pois permite o acesso a produtos e serviços que não são produzidos no Brasil ou que são produzidos a um custo mais baixo.</p>
+                            <div class="bg-blue-50 border-l-4 border-blue-900 p-4 mb-6">
+                                <p class="font-bold text-blue-900 italic">"Como funciona a importação? Fale conosco para assessorarmos você e seu negócio da melhor forma."</p>
+                            </div>
+                            <a href="https://wa.me/555598130054" class="text-blue-900 font-bold hover:underline">Ler mais & entrar em contato →</a>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="Sao-Borja-Sao-Tome-Credito-para-Mercovia_-1024x576.jpeg" alt="Porto Seco São Borja" class="w-full h-80 object-cover hover:scale-105 transition duration-500">
+                            <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur px-3 py-1 text-xs font-bold rounded">Porto Seco São Borja</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Exportação -->
+                <div id="export" class="tab-content animate-fadeIn">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1 relative rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="Sao-Borja-Sao-Tome-Credito-para-Mercovia_-1024x576.jpeg" alt="Exportação Internacional" class="w-full h-80 object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <h4 class="text-3xl font-bold text-blue-900 mb-6">Exportação</h4>
+                            <p class="text-gray-600 mb-6">A LM Comex & Logística é uma empresa especializada que ajuda empresas a exportar produtos de forma segura através de:</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="bg-blue-900 text-white p-2 rounded-lg mr-4"><i class="fas fa-chart-line"></i></div>
+                                    <div><strong>Assessoria e consultoria:</strong> Identificação de oportunidades e preparação documental completa.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-blue-900 text-white p-2 rounded-lg mr-4"><i class="fas fa-file-contract"></i></div>
+                                    <div><strong>Desembaraço aduaneiro:</strong> Agilidade garantida no processo de liberação aduaneira.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-blue-900 text-white p-2 rounded-lg mr-4"><i class="fas fa-truck-moving"></i></div>
+                                    <div><strong>Logística:</strong> Escolha do modal mais adequado e acompanhamento total até a entrega.</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Assessoria -->
+                <div id="assessoria" class="tab-content animate-fadeIn">
+                    <div class="bg-slate-50 p-10 rounded-2xl border border-slate-200">
+                        <h4 class="text-3xl font-bold text-blue-900 mb-6">Assessoria Aduaneira</h4>
+                        <p class="text-gray-600 mb-8">Serviço focado no acompanhamento técnico em todas as etapas, desde a importação até a exportação final.</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-400">
+                                <h5 class="font-bold text-blue-900 mb-2">Análise Documental</h5>
+                                <p class="text-sm text-gray-500">Verificação rigorosa para garantir documentação completa e correta.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-400">
+                                <h5 class="font-bold text-blue-900 mb-2">Representação</h5>
+                                <p class="text-sm text-gray-500">Atuamos como sua voz oficial junto às autoridades aduaneiras.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-400">
+                                <h5 class="font-bold text-blue-900 mb-2">Formulários</h5>
+                                <p class="text-sm text-gray-500">Auxílio especializado no preenchimento de formulários complexos.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-400">
+                                <h5 class="font-bold text-blue-900 mb-2">Acompanhamento</h5>
+                                <p class="text-sm text-gray-500">Monitoramento em tempo real até o desembaraço da carga.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Consultoria -->
+                <div id="consultoria" class="tab-content animate-fadeIn">
+                    <h4 class="text-3xl font-bold text-blue-900 mb-6">Consultoria Internacional</h4>
+                    <p class="text-gray-600 mb-10">Orientação estratégica para empresas que buscam expandir fronteiras e superar desafios do comércio exterior.</p>
+                    <div class="grid md:grid-cols-4 gap-6 text-center">
+                        <div class="p-6 bg-blue-900 text-white rounded-2xl shadow-xl">
+                            <i class="fas fa-globe-americas text-3xl mb-4"></i>
+                            <h5 class="font-bold text-sm uppercase">Pesquisa de Mercado</h5>
+                        </div>
+                        <div class="p-6 bg-blue-900 text-white rounded-2xl shadow-xl">
+                            <i class="fas fa-exclamation-triangle text-3xl mb-4"></i>
+                            <h5 class="font-bold text-sm uppercase">Análise de Riscos</h5>
+                        </div>
+                        <div class="p-6 bg-blue-900 text-white rounded-2xl shadow-xl">
+                            <i class="fas fa-lightbulb text-3xl mb-4"></i>
+                            <h5 class="font-bold text-sm uppercase">Estratégias Comerciais</h5>
+                        </div>
+                        <div class="p-6 bg-blue-900 text-white rounded-2xl shadow-xl">
+                            <i class="fas fa-comments-dollar text-3xl mb-4"></i>
+                            <h5 class="font-bold text-sm uppercase">Negociações</h5>
+                        </div>
+                    </div>
+                    <div class="mt-10 p-8 bg-blue-50 rounded-xl border-t-4 border-blue-900">
+                        <h5 class="font-bold text-blue-900 mb-4 uppercase tracking-wider">Vantagens de nossa consultoria:</h5>
+                        <ul class="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
+                            <li><i class="fas fa-check-circle mr-2"></i> Cumprimento de normas</li>
+                            <li><i class="fas fa-rocket mr-2"></i> Maior eficiência operacional</li>
+                            <li><i class="fas fa-piggy-bank mr-2"></i> Redução drástica de custos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Transporte -->
+                <div id="transporte" class="tab-content animate-fadeIn">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h4 class="text-3xl font-bold text-blue-900 mb-6">Representação de Transportes</h4>
+                            <p class="text-gray-600 mb-6">O transporte internacional é a espinha dorsal do comércio exterior. Cada modal tem suas vantagens específicas para o seu produto.</p>
+                            <div class="space-y-6">
+                                <div class="flex items-center p-4 bg-white shadow-md rounded-xl">
+                                    <div class="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-full mr-4 text-blue-900"><i class="fas fa-ship"></i></div>
+                                    <div><h5 class="font-bold">Marítimo</h5><p class="text-xs text-gray-500">Mais econômico para grandes volumes.</p></div>
+                                </div>
+                                <div class="flex items-center p-4 bg-white shadow-md rounded-xl">
+                                    <div class="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-full mr-4 text-blue-900"><i class="fas fa-plane"></i></div>
+                                    <div><h5 class="font-bold">Aéreo</h5><p class="text-xs text-gray-500">Velocidade e urgência para cargas leves.</p></div>
+                                </div>
+                                <div class="flex items-center p-4 bg-white shadow-md rounded-xl">
+                                    <div class="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-full mr-4 text-blue-900"><i class="fas fa-truck"></i></div>
+                                    <div><h5 class="font-bold">Terrestre / Multimodal</h5><p class="text-xs text-gray-500">Conexões diretas via Porto Seco.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-900 p-1 text-white rounded-2xl">
+                             <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" class="rounded-2xl opacity-90 w-full h-96 object-cover" alt="Logística">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. OPORTUNIDADES -->
+    <section class="py-20 bg-gradient-to-br from-blue-900 to-blue-950 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Oportunidades do mercado Internacional</h2>
+            <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">A LM Comex & Logística tem os profissionais qualificados para ajudá-lo a aproveitar o mercado global com segurança.</p>
+            <a href="https://wa.me/555598130054" class="inline-block bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition-all transform hover:scale-110 shadow-2xl uppercase tracking-widest">Aproveite Agora</a>
+        </div>
+    </section>
+
+    <!-- 6. FAQ (ACORDEÃO) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4 italic">Perguntas Frequentes (FAQ)</h2>
+                <p class="text-gray-500">Esclareça suas principais dúvidas sobre o comércio exterior.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm transition-all hover:shadow-md" open>
+                    <summary class="flex justify-between items-center font-bold text-blue-900 cursor-pointer list-none text-lg">
+                        Qual documentação necessária para importar e exportar produtos?
+                        <span class="group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
+                        <p class="mb-4 font-semibold">Os documentos fundamentais são:</p>
+                        <ul class="list-disc ml-6 space-y-2">
+                            <li><strong>Fatura comercial:</strong> Detalhes dos produtos, preços e pagamentos.</li>
+                            <li><strong>Conhecimento de embarque:</strong> Comprovante de propriedade durante o trânsito.</li>
+                            <li><strong>Certificado de origem:</strong> Atestado de procedência da carga.</li>
+                            <li><strong>RE e DI:</strong> Registro de Exportação e Declaração de Importação (Brasil).</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm transition-all hover:shadow-md">
+                    <summary class="flex justify-between items-center font-bold text-blue-900 cursor-pointer list-none text-lg">
+                        Qual prazo para retornarem minha solicitação?
+                        <span class="group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 border-t pt-4 italic">
+                        A LM Comex e Logística se compromete a retornar todas as solicitações em até **24 horas úteis**.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm transition-all hover:shadow-md">
+                    <summary class="flex justify-between items-center font-bold text-blue-900 cursor-pointer list-none text-lg">
+                        Como funciona o acordo ATIT?
+                        <span class="group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 border-t pt-4 space-y-3">
+                        <p>O **Acordo de Tarifa Externa Comum (ATIT)** é um acordo entre os países do Mercosul que estabelece uma tarifa externa comum para produtos importados de países não membros do bloco.</p>
+                        <p>É vital para o comércio regional, ajudando a proteger a indústria local de produtos importados de fora do bloco econômico.</p>
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm transition-all hover:shadow-md">
+                    <summary class="flex justify-between items-center font-bold text-blue-900 cursor-pointer list-none text-lg">
+                        Por que devo contar com a LM Comex e Logística?
+                        <span class="group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 border-t pt-4 space-y-4">
+                        <p>Oferecemos uma solução 360º para comércio exterior:</p>
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-history text-blue-900 mr-2"></i> <strong>Experiência:</strong> Mais de 10 anos de atuação consolidada no mercado.</li>
+                            <li><i class="fas fa-award text-blue-900 mr-2"></i> <strong>Competência:</strong> Equipe formada por profissionais qualificados e especialistas.</li>
+                            <li><i class="fas fa-bolt text-blue-900 mr-2"></i> <strong>Eficiência:</strong> Foco em qualidade e redução de tempo nos processos aduaneiros.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato" class="bg-blue-950 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 border-b border-white/10 pb-12 mb-8">
+                <div>
+                    <img src="LOGO-ML-Comex-2026.png" alt="LM Comex & Logística" class="h-16 mb-6 brightness-0 invert">
+                    <p class="text-blue-200 leading-relaxed">Referência em logística e comércio exterior desde 1997, unindo eficiência e tecnologia para conectar o seu negócio ao mundo.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6 flex items-center"><span class="w-8 h-1 bg-blue-400 mr-3"></span>Links</h4>
+                    <ul class="space-y-3 text-blue-200 font-medium">
+                        <li><a href="#" class="hover:text-white transition">Início</a></li>
+                        <li><a href="#quem-somos" class="hover:text-white transition">Quem Somos</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition">Serviços</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6 flex items-center"><span class="w-8 h-1 bg-blue-400 mr-3"></span>Contato</h4>
+                    <div class="space-y-4 text-blue-200">
+                        <p class="flex items-center"><i class="fas fa-phone-alt w-6 text-blue-400"></i> (55) 559813-0054</p>
+                        <p class="flex items-center"><i class="fab fa-whatsapp w-6 text-blue-400"></i> Suporte WhatsApp</p>
+                        <p class="flex items-center"><i class="fas fa-envelope w-6 text-blue-400"></i> contato@lmcomex.com.br</p>
+                        <p class="flex items-center"><i class="fas fa-map-marker-alt w-6 text-blue-400"></i> São Borja - RS | Porto Seco</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-sm text-blue-300">
+                Desenvolvido por **MonarcaHub** | &copy; 2026 LM Comex & Logística. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE VÍDEO -->
+    <div id="videoModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 p-4">
+        <div class="relative w-full max-w-5xl">
+            <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white text-4xl hover:text-red-500 transition">&times;</button>
+            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10">
+                <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Lógica de Abas
+        function openTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            const buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Lógica de Modal de Vídeo
+        const modal = document.getElementById("videoModal");
+        const iframe = document.getElementById("videoIframe");
+
+        function openVideoModal(url) {
+            iframe.src = url;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            iframe.src = "";
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal ao clicar fora do conteúdo
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeVideoModal();
+            }
+        }
+    </script>
+</body>
+</html>
